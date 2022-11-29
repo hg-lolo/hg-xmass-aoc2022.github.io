@@ -14,3 +14,88 @@ url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow3.png');
 	z-index:-1;
 	animation: snow 10s linear infinite;
 }
+
+@keyframes snow {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+    100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+}
+
+.container {
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    grid-template-areas: 
+    "header header header header"
+    "link link board board"
+    "image image board board";
+    justify-items: center;
+    align-items: center;
+    }
+
+@media all and (max-width: 720px) {
+    .container {
+        grid-template-columns: 1fr;
+    grid-template-rows: auto;
+        grid-template-areas: 
+    "header"
+    "board"
+    "link"
+    "image";
+    }
+}
+.crown {
+    grid-area: image;
+    transform: rotate(15deg);
+    width: max(250px, 20vw);
+
+}
+
+.title {
+    grid-area:header;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.glitter-text {
+    font-family: 'Emblema One',  sans-serif;
+    -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; 
+    background-image: url(https://media4.giphy.com/media/WKdWA04KRn58A/giphy.gif?cid=ecf05e47yhupeu9yerk837ilmckbswf3s7unvhgyky3vdjum&rid=giphy.gif&ct=g);
+    background-attachment: unset;
+    background-position: 0%;
+    font-style: italic;
+    animation: glitter-moving infinite 20s;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+    animation-timing-function: linear;
+    text-align: center;
+  }
+  @keyframes glitter-moving {
+    0% {
+      background-position: 0%;  
+    }
+    50% {
+      background-position: 100%;  
+    }
+    100% {
+      background-position: 0%;
+    }
+  }
+
+  .joinus {
+    text-align: center;
+    grid-area: link;
+    color:aliceblue;
+    font-size: max(20px,2vw);
+  }
+
+  .leaderboard {
+    grid-area: board;
+    color : white;
+    font-weight: bold;
+    font-size: max(20px,2vw);
+  }
