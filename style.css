@@ -34,7 +34,7 @@ url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow3.png');
     align-items: center;
     }
 
-@media screen and (max-width: 720px) {
+    @media only screen and (max-width: 768px) {
     .container {
         grid-template-columns: 1fr;
     grid-template-rows: auto;
