@@ -23,13 +23,13 @@ url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow3.png');
 
 .container {
     display:grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto 1fr auto;
     gap: 20px;
     grid-template-areas: 
-    "header header header header"
-    "link link board board"
-    "image image board board";
+    "header header"
+    "link board"
+    "image board";
     justify-items: center;
     align-items: center;
     }
@@ -48,7 +48,7 @@ url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow3.png');
 .crown {
     grid-area: image;
     transform: rotate(15deg);
-    width: max(250px, 20vw);
+    width: max(250px, 35vh);
 
 }
 
@@ -90,7 +90,7 @@ url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow3.png');
     text-align: center;
     grid-area: link;
     color:aliceblue;
-    font-size: max(20px,2vw);
+    font-size: max(20px,1.3vw);
   }
 
   .leaderboard {
@@ -98,4 +98,38 @@ url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow3.png');
     color : white;
     font-weight: bold;
     font-size: max(20px,2vw);
+  }
+  @media screen and (min-width:720px) and (max-width: 1408px) {
+    .text {
+    margin:2px 0px 7px 0px;
+    } 
+    .joinus {
+        font-size: max(20px,1vw);
+      }
+
+      .crown {
+        width: max(200px, 20vh);
+    
+    }
+  }
+
+  
+
+  a:link {
+    color: greenyellow;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: green;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: hotpink;
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
   }
