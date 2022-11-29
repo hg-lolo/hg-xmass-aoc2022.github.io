@@ -1,0 +1,16 @@
+body {
+	background: #000;
+}
+
+#snow{
+	background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow1.png'), 
+url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow2.png'), 
+url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow3.png');
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index:-1;
+	animation: snow 10s linear infinite;
+}
