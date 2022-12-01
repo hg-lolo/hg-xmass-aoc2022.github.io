@@ -15,7 +15,7 @@ jobs:
             SUPER_SECRET: ${{ secrets.COOKIE }}
         with:
           endpoint: https://adventofcode.com/2022/leaderboard/private/view/289461.json
-          configuration: '{ "method": "GET", "headers": {"Cookie": "session=$SUPER_SECRET"} }'
+          configuration: '{ "method": "GET", "headers": {"Cookie": "$SUPER_SECRET"} }'
       - name: Build and Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
