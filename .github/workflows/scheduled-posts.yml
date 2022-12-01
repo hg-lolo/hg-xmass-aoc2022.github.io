@@ -4,17 +4,18 @@ jobs:
   refresh-feed:
     runs-on: ubuntu-latest
     steps:
+    
       - name: Checkout 🛎️
         uses: actions/checkout@v2
         with:
           persist-credentials: false
-      - name: Create annotation for build error
-        run: echo "${{secrets.aoctoken.COOKIE}}"
       - name: Fetch API Data 📦
         uses: JamesIves/fetch-api-data-action@v2
+        env:
+            SUPER_SECRET: ${{ secrets.COOKIE }}
         with:
           endpoint: https://adventofcode.com/2022/leaderboard/private/view/289461.json
-          configuration: '{ "method": "GET", "headers": {"Cookie": "session=53616c7465645f5fad7cfefc53a2a765c96be4ffd6fe75f104fbf3f184457c56c4c3284fa05f440af51e26eb91589d51c580ea10795d9b771c9515f1dba9799d"} }'
+          configuration: '{ "method": "GET", "headers": {"Cookie": "session=$SUPER_SECRET"} }'
       - name: Build and Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
