@@ -3,11 +3,11 @@ name: Build every hour
 on:
   schedule:
    - cron: '0 * * * *'
-#jobs:
- # curl:
-#    runs-on: ubuntu-latest
- #   steps:
- #   - name: curl
-  #    uses: wei/curl@master
-  #    with:
-   #     args: "-X POST -H 'Authorization: token ${{ secrets.PAGES_ACCESS_TOKEN }}' -H 'Accept: application/vnd.github.ant-man-preview+json' https://api.github.com/repos/YourUserName/YourRepository/pages/builds"
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - name: curl
+      uses: wei/curl@master
+      with:
+        args: "-H "Cookie: session=${{ secrets.aoctoken.COOKIE }}" https://adventofcode.com/2022/leaderboard/private/view/289461.json > test.json"
