@@ -12,7 +12,7 @@ jobs:
         uses: JamesIves/fetch-api-data-action@v2
         with:
           endpoint: https://adventofcode.com/2022/leaderboard/private/view/289461.json
-          configuration: '{ "method": "GET", "headers": {"Cookie": "session=${{ secrets.aoctoken.COOKIE }}"} }'
+          configuration: '{ "method": "GET", "headers": {"Cookie": "session=${{ secrets.COOKIE }}"} }'
       - name: Build and Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
