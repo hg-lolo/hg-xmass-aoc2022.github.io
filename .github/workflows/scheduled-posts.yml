@@ -9,12 +9,12 @@ jobs:
         with:
           persist-credentials: false
       - name: Create annotation for build error
-        run: echo "${{ secrets.COOKIE }}"
+        run: echo "$secrets.COOKIE"
       - name: Fetch API Data 📦
         uses: JamesIves/fetch-api-data-action@v2
         with:
           endpoint: https://adventofcode.com/2022/leaderboard/private/view/289461.json
-          configuration: '{ "method": "GET", "headers": {"Cookie": "session=${{ secrets.COOKIE }}"} }'
+          configuration: '{ "method": "GET", "headers": {"Cookie": "session=$secrets.COOKIE"} }'
       - name: Build and Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
