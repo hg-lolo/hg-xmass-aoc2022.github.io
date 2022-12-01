@@ -11,11 +11,9 @@ jobs:
           persist-credentials: false
       - name: Fetch API Data 📦
         uses: JamesIves/fetch-api-data-action@v2
-        env:
-            SUPER_SECRET: ${{ secrets.COOKIE }}
         with:
           endpoint: https://adventofcode.com/2022/leaderboard/private/view/289461.json
-          configuration: '{ "method": "GET", "headers": {"Cookie": "$SUPER_SECRET"} }'
+          configuration: '{ "method": "GET", "headers": {"Cookie": "${{ secrets.COOKIE }}"} }'
       - name: Build and Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
