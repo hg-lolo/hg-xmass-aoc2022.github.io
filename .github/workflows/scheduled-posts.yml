@@ -1,13 +1,11 @@
-name: Build every hour
-
-on:
-  schedule:
-   - cron: '0 * * * *'
+name: Refresh Feed
+on: [push]
 jobs:
-  curl:
+  refresh-feed:
     runs-on: ubuntu-latest
     steps:
-    - name: curl
-      uses: wei/curl@master
-      with:
-        args: "-H "Cookie: session=${{ secrets.aoctoken.COOKIE }}" https://adventofcode.com/2022/leaderboard/private/view/289461.json > test.json"
+      - name: Fetch API Data 📦
+        uses: JamesIves/fetch-api-data-action@v2
+        with:
+          endpoint: https://adventofcode.com/2022/leaderboard/private/view/289461.json
+          configuration: '{ "method": "GET", "headers": {"Cookie": "session=${{ secrets.aoctoken.COOKIE }}"} }'
