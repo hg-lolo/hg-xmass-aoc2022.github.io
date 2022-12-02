@@ -1,0 +1,85 @@
+
+.container {
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    row-gap: 30px;
+    grid-template-areas: 
+    "header header"
+    "link link"
+    "image nav";
+    justify-items: center;
+    align-items: center;
+    }
+
+    .crown {
+      grid-area: image;
+      transform: rotate(15deg);
+      width: max(250px, 35vh);
+      
+    }
+    
+    .title {
+      grid-area:header;
+      text-align: center;
+      font-size: 4rem;
+      font-weight: bold;
+    }
+    
+    
+    
+  .joinus {
+    text-align: center;
+    grid-area: link;
+    color:aliceblue;
+    font-size: max(20px,1.3vw);
+  }
+  
+  .nav {
+    width: 70%;
+    display: inline-flex;
+    justify-content: space-around;
+    grid-area: nav;
+    color : white;
+    font-weight: bold;
+    font-size: max(20px,2vw);
+    text-align: center;
+  }
+  @media screen and (min-width:720px) and (max-width: 1408px) {
+    .text {
+      margin:2px 0px 7px 0px;
+    } 
+    .joinus {
+      font-size: max(20px,1.3vw);
+    }
+    
+    .crown {
+      width: max(200px, 20vh);
+      
+    }
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+  .container {
+      grid-template-columns: 1fr;
+  grid-template-rows: auto;
+      grid-template-areas: 
+  "header"
+  "nav"
+  "link"
+  "image";
+  }
+  .title {
+    width: 80%;
+    font-size: 3rem;
+  }
+  .joinus {
+    width: 80%;
+    text-align: left;
+    grid-area: link;
+    color:aliceblue;
+    font-size: max(15px,1vw);
+  }
+}

@@ -21,47 +21,9 @@ url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow3.png');
     100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
 }
 
-.container {
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto 1fr auto;
-    gap: 20px;
-    grid-template-areas: 
-    "header header"
-    "link board"
-    "image board";
-    justify-items: center;
-    align-items: center;
-    }
-
-    @media only screen and (max-width: 768px) {
-    .container {
-        grid-template-columns: 1fr;
-    grid-template-rows: auto;
-        grid-template-areas: 
-    "header"
-    "board"
-    "link"
-    "image";
-    }
-}
-.crown {
-    grid-area: image;
-    transform: rotate(15deg);
-    width: max(250px, 35vh);
-
-}
-
-.title {
-    grid-area:header;
-    text-align: center;
-    font-size: 5rem;
-    font-weight: bold;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
 
 .glitter-text {
-    font-family: 'Emblema One',  sans-serif;
+    font-family: 'Press Start 2P', cursive;
     -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; 
     background-image: url(https://media4.giphy.com/media/WKdWA04KRn58A/giphy.gif?cid=ecf05e47yhupeu9yerk837ilmckbswf3s7unvhgyky3vdjum&rid=giphy.gif&ct=g);
@@ -86,36 +48,7 @@ url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/807677/snow3.png');
     }
   }
 
-  .joinus {
-    text-align: center;
-    grid-area: link;
-    color:aliceblue;
-    font-size: max(20px,1.3vw);
-  }
-
-  .leaderboard {
-    grid-area: board;
-    color : white;
-    font-weight: bold;
-    font-size: max(20px,2vw);
-    text-align: center;
-  }
-  @media screen and (min-width:720px) and (max-width: 1408px) {
-    .text {
-    margin:2px 0px 7px 0px;
-    } 
-    .joinus {
-        font-size: max(20px,1vw);
-      }
-
-      .crown {
-        width: max(200px, 20vh);
-    
-    }
-  }
-
   
-
   a:link {
     color: greenyellow;
   }

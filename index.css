@@ -1,0 +1,101 @@
+
+.game-txt {
+    font-family: 'Press Start 2P', cursive;
+  color: white;
+  font-size: 40px;
+  line-height: 40px;
+  letter-spacing: 5px;
+  text-shadow: -2px 0 0 #fdff2a,
+    -4px 0 0 #df4a42,
+    2px 0 0 #91fcfe,
+    4px 0 0 #4405fc;
+}
+
+.game-animation {
+    grid-area: ranktitle;
+
+    animation: blink 1s steps(4, start) infinite;
+}
+ @keyframes blink {to
+     {visibility: hidden;}}
+   
+.container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto 1fr auto auto ;
+
+    gap: 20px;
+    grid-template-areas: 
+    "header header header header header header"
+    "ranktitle ranktitle ranktitle ranktitle ranktitle ranktitle"
+    ". rank rank rank rank ."
+    ". td td td td ."
+    "nav nav nav nav nav nav";
+    justify-items: center;
+    align-items: center;
+}
+
+.title {
+    grid-area:header;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+
+th , td {
+    text-align: left;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    font-size: max(18px, 2vw);
+    line-height: 2vw;
+    letter-spacing: 0.6vw;
+    padding-bottom: 30px;
+    text-shadow: -2px 0 0 #fdff2a,
+      -4px 0 0 #df4a42,
+      2px 0 0 #91fcfe,
+      4px 0 0 #4405fc;
+}
+
+@media only screen and (max-width: 768px)  {
+    .container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto 1fr auto auto ;
+    
+        gap: 20px;
+        row-gap: 40px;
+        grid-template-areas: 
+        "header header "
+        "ranktitle ranktitle "
+        "rank rank "
+        "td td "
+        "nav nav ";
+        justify-items: center;
+        align-items: center;
+    }
+}
+table {
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+
+}
+.leaderboard {
+    grid-area: rank;
+}
+.star {
+    font-size: 3vw;
+}
+
+.nav {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 70%;
+    display: inline-flex;
+    justify-content: space-around;
+    grid-area: nav;
+    color : white;
+    font-weight: bold;
+    font-size: max(20px,2vw);
+    text-align: center;
+  }

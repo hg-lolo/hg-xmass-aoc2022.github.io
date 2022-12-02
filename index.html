@@ -1,37 +1,118 @@
 <!DOCTYPE html>
 
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>HG Advent of Code</title>
 
-    <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-      <title>HG Advent of Code</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <script>
+    const names = [
+      {id:"Lou",  login:"Manami69"},
+      { id:"Thomas", login:"Thomas Rivollet"},
+      { id:"Loic" , login:"Loïc Eickmayer"},
+            { id:"Adrian", login: "Adrian Trif"},
+          { id:"Louis" , login:"LouisNitag"},
+           { id:"Guillaume" , login:"Guillaume Payet"},
+          { id:"Theo" , login: "TheoRamousse"},
+          { id:"Victor Ar" , login: "Victor Archambault"},
+          { id:"Michael"  , login: "MGrebert"},
+           { id:"Jordan" , login: "Jordan-Hardis"},
+          { id:"nornort"  , login: "Nornort"}
+  ]
+    let players = [];
+    function generateTableHead(table, data) {
+      let thead = table.createTHead();
+      let row = thead.insertRow();
+      for (let key of data) {
+        let th = document.createElement("th");
+        let text = document.createTextNode(key);
+        th.appendChild(text);
+        row.appendChild(th);
+      }
+    }
 
-      <meta charset="utf-8">
+    function generateTable(table, data) {
+      for (let element of data) {
+        let row = table.insertRow();
+        for (key in element) {
+          let cell = row.insertCell();
+          let text = document.createTextNode(element[key]);
+          cell.appendChild(text);
+        }
+      }
+    }
+    function cmp(a, b) {
+      if (a > b) return +1;
+      if (a < b) return -1;
+      return 0;
+    }
+    function getPlayers(jison) {
+      let unranked = []; // get names
 
-      <link rel="stylesheet" href="style.css">
+      for (let key in jison.members) {
+        unranked.push({
+          name: jison["members"][key]["name"],
+          stars: jison["members"][key]["stars"],
+          ts: jison["members"][key]["last_star_ts"],
+        });
+      }
+      unranked = unranked.filter((val) => val.stars != 0);
+      unranked = unranked.sort(function (a, b) { return cmp(b.stars, a.stars) || cmp(a.ts, b.ts)}).slice(0, 10);
+      let rank = 1;
+      let scoremax = unranked[0].stars;
+      unranked.forEach(val => {
+        if (val.stars < scoremax){
+          rank++;
+          scoremax = val.stars;
+        }
+        nameId = names.map(e => e.login).indexOf(val.name);
+        let newName = nameId !== -1 ? names[nameId].id : val.name;
+        console.log(newName);
 
-    </head>
+          players.push({rank: rank, score: val.stars, name: newName})
+      });
+      console.log(unranked);
+    }
 
-    <body>
-        <div id="snow"></div>
-       
-        <span class="container">
-            <span class="title glitter-text">Advent of code 2022</span>
-            <span class="joinus">
-            <p class="text">Rejoins-nous sur <a href="https://adventofcode.com/" target="_blank">advent of code</a>, le calendrier de l'avent du code !</p>
-            <p class="text">Rejoins la compétition en te connectant et en allant sur <a href="https://adventofcode.com/2022/leaderboard/private" target="_blank">[private leaderboard]</a> !</p>
-            <p class="text">code : 289461-33e856b1 <br>Pense à partager ton pseudo à Lou Lopez pour qu'on puisse te retrouver!</p>
-            <p class="text">Langage 100% libre : certains le font en excel ou en scratch !</p>
-            <p class="text">Qui sait, il y aura peut-être des petites surprises !! 🎁🎅🤩🍾<br /> Rendez-vous les lundis midis pour échanger autour de nos choix d'implémentation !</p>
-            <p class="text">Des questions ? Contacte Adrian Trif ou Lou Lopez</p>
+    document.addEventListener("DOMContentLoaded", function () {
+      
+      fetch("https://hg-xmass-advent.github.io/data/data.json")
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log("FETCHED BITCHES");
+          getPlayers(data);
+          let table = document.querySelector("table");
+      let keys = Object.keys(players[0]);
+      generateTableHead(table, keys);
+      generateTable(table, players);
+        })
+        .catch((err) => {
+          // Do something for an error here
+        });
+      //....
+    });
+  </script>
+  <body>
+    <div id="snow"></div>
 
-            </span>
-            <span class="leaderboard"><p>🚧🚧🚧</p>
-            <p>Classement en construction</p>
-            <p>🚧🚧🚧</p></span>
-            
-        <img src="https://www.lovethispic.com/uploaded_images/54367-Christmas-Gif.gif?1" alt="" class="crown">
+    <span class="container">
+      <span class="title glitter-text">Advent of code 2022</span>
+      <span class="game-txt game-animation">Top 10</span>
+      <span class="leaderboard table"><table></table></span>
+
+      <span class="nav "><p><a href="./join.html">Rejoins-nous</a></p></span>
     </span>
-    </body>
-
+  </body>
 </html>
