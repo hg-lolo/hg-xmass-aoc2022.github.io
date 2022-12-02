@@ -1,5 +1,7 @@
 name: Refresh Feed
-on: [push]
+on: 
+  schedule:
+    - cron: '42 * * * *'
 jobs:
   refresh-feed:
     runs-on: ubuntu-latest
