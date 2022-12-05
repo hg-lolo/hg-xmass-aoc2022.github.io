@@ -82,6 +82,7 @@ table {
 
 }
 .leaderboard {
+    width: 90%;
     grid-area: rank;
 }
 .star {

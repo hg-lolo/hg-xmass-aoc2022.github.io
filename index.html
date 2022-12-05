@@ -24,7 +24,7 @@
       { id: "Louis", login: "LouisNitag" },
       { id: "Guillaume", login: "Guillaume Payet" },
       { id: "Theo", login: "TheoRamousse" },
-      { id: "Victor Ar", login: "Victor Archambault" },
+      { id: "VictorAr", login: "Victor Archambault" },
       { id: "Michael", login: "MGrebert" },
       { id: "Jordan", login: "Jordan-Hardis" },
       { id: "nornort", login: "Nornort" },
@@ -73,7 +73,7 @@
         .sort(function (a, b) {
           return cmp(b.stars, a.stars) || cmp(a.ts, b.ts);
         })
-        .slice(0, 10);
+        .slice(0, 8);
       let rank = 1;
       let scoremax = unranked[0].stars;
       unranked.forEach((val) => {
@@ -111,7 +111,7 @@
 
     <span class="container">
       <span class="title glitter-text">Advent of code 2022</span>
-      <span class="game-txt game-animation">Top 10</span>
+      <span class="game-txt game-animation">Top 8</span>
       <span class="leaderboard table"><table></table></span>
 
       <span class="nav"
